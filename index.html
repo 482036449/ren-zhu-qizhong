@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>王者荣耀英雄简介</title>
+<style>
+	<!--
+		/*总体布局*/
+		.container{text-align: center;}
+		/*表格位置*/
+		.logoPosition{margin:auto}
+	
+		body{background-color:#DAECF4;}
+		table{margin: auto;
+			  border-spacing: 0px;
+			  border:#FFFFFF;
+			  border-collapse: collapse;
+			  width: 1100px;
+			  height:200px;}
+		td{text-align: center;}
+		input{width: 150px;
+			  height: 50px;
+			  border-radius:20px;
+			  border: 0px;}
+	
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+        .box {
+            width: 500px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin: 30px auto;
+            padding: 5px;}
+        .inner{
+            width: 500px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;}
+        .inner img{
+            width: 500px;
+            height: 300px;
+            vertical-align: top
+        }
+        ul {
+            width: 1000%;
+            position: absolute;
+            list-style: none;
+            left:0;
+            top: 0;
+        }
+        .inner li{
+            float: left;
+ 
+        }
+ 
+        ol {
+            position: absolute;
+            height: 20px;
+            right: 20px;
+            bottom: 20px;
+            text-align: center;
+            padding: 5px;
+        }
+        ol li{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            background-color: #fff;
+            margin: 5px;
+            cursor: pointer;
+ 
+        }
+        ol .current{
+            background-color: red;
+        }
+        #arr{
+            display: none;
+        }
+        #arr span{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #fff;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #000;
+            opacity: 0.5;
+            border: 1px solid #fff;
+        }
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+	-->
+    </style>
+</head>
+
+<body>
+	<div class="container">
+		<!--开始 王者荣耀logo和搜索框设置-->
+		<div class="logoPosition">
+			<img src="img/wangzhelogo1.png" alt="" width="276" height="200">
+		</div>
+		<!--结束-->
+		<!--开始 射手 法师 坦克设置-->
+			<table style="width: 800px;height: 100px">
+					<tr>
+						<td>
+							<a href="page2/page2-sheshou.html" target="_blank">
+								<img src="img/sheshou.png" alt="" width="120" height="120">
+							</a>
+						</td>
+						<td>
+							<a href="page2/page2-fashi.html" target="_blank">
+								<img src="img/fashi.png" alt="" width="120" height="120">
+							</a>
+						</td>
+						<td>
+							<a href="page2/page2-tanke.html" target="_blank">
+								<img src="img/tanke.png" alt="" width="120" height="120">
+							</a>
+						</td>
+					</tr>
+			</table>
+		<!--结束-->
+		<br>
+		<table style="width: 300px;height: 100px;">
+			<tr>
+				<td>
+					<form method="get" action="http://www.baidu.com" target="_blank">
+						<input required type="search" placeholder="搜索一下">
+						<input type="submit" style="width: 50px;background-color: #6C85EC;color:aliceblue;border-radius: 50%">
+					</form>
+				</td>
+				<td>
+					<a href="logOn/logOn.html" target="_blank">
+						<img src="img/denglulogo.png" alt="" width="50" height="50">
+					</a>
+				</td>
+			</tr>
+		</table>
+		
+	</div>
+	
+	<div class="box" id="box">
+
+		<div class="inner">
+
+			<ul>
+				<li><a href="page3/page3-wangzhaojun.html"><img src="img/wangzhaojun.jpg" alt=""></a></li>
+				<li><a href="page3/page3-daji.html"><img src="img/daji.jpeg" alt=""></a></li>
+				<li><a href="page3/page3-zhangliang.html"><img src="img/zhangliang.jpg" alt=""></a></li>
+				<li><a href="page3/page3-yashe.html"><img src="img/yashe.jpg" alt=""></a></li>
+				<li><a href="page3/page3-xiangyu.html"><img src="img/xiangyu.jpg" alt=""></a></li>
+				<li><a href="page3/page3-liushan.html"><img src="img/liushan.jpg" alt=""></a></li>
+
+			</ul>
+
+			<ol class="bar"> </ol>
+
+			<div id="arr">
+				<span id="left"></span>
+				<span id="right"></span>
+			</div>
+		</div>
+	</div>
+	<script>
+		function my$(id) {
+			return document.getElementById(id);
+		}
+
+
+		var box=my$("box");
+		var inner=box.children[0];
+		var ulObj=inner.children[0];
+		var list=ulObj.children;
+		var olObj=inner.children[1];
+		var arr=my$("arr");
+		var imgWidth=inner.offsetWidth;
+		var right=my$("right");
+		var pic=0;
+
+		for(var i=0;i<list.length;i++){
+			var liObj=document.createElement("li");
+
+			olObj.appendChild(liObj);
+			liObj.innerText=(i+1);
+			liObj.setAttribute("index",i);
+
+
+			liObj.οnmοuseοver=function () {
+
+
+				for (var j=0;j<olObj.children.length;j++){
+					olObj.children[j].removeAttribute("class");
+				}
+				this.className="current";
+				pic=this.getAttribute("index");
+				animate(ulObj,-pic*imgWidth);
+			}
+
+		}
+
+
+		olObj.children[0].className = "current";
+
+		ulObj.appendChild(ulObj.children[0].cloneNode(true));
+
+		var timeId=setInterval(onmouseclickHandle,1000);
+
+		box.οnmοuseοver=function () {
+			arr.style.display="block";
+			clearInterval(timeId);
+		};
+		box.οnmοuseοut=function () {
+			arr.style.display="none";
+			timeId=setInterval(onmouseclickHandle,1000);
+		};
+
+		right.οnclick=onmouseclickHandle;
+		function onmouseclickHandle() {
+
+			if (pic == list.length - 1) {
+
+				pic = 0;
+				ulObj.style.left = 0 + "px";
+			}
+			pic++;
+			animate(ulObj, -pic * imgWidth);
+
+			if (pic == list.length - 1) {
+
+				olObj.children[olObj.children.length - 1].className = "";
+
+				olObj.children[0].className = "current";
+			} else {
+
+				for (var i = 0; i < olObj.children.length; i++) {
+					olObj.children[i].removeAttribute("class");
+				}
+				olObj.children[pic].className = "current";
+			}
+		}
+		left.οnclick=function () {
+			if (pic==0){
+				pic=list.length-1;
+				ulObj.style.left=-pic*imgWidth+"px";
+			}
+			pic--;
+			animate(ulObj,-pic*imgWidth);
+			for (var i = 0; i < olObj.children.length; i++) {
+				olObj.children[i].removeAttribute("class");
+			}
+
+			olObj.children[pic].className = "current";
+		};
+
+
+		function animate(element, target) {
+			clearInterval(element.timeId);
+
+			element.timeId = setInterval(function () {
+
+				var current = element.offsetLeft;
+
+				var step = 10;
+				step = current < target ? step : -step;
+
+				current += step;
+				if (Math.abs(current - target) > Math.abs(step)) {
+					element.style.left = current + "px";
+				} else {
+
+					clearInterval(element.timeId);
+
+					element.style.left = target + "px";
+				}
+			}, 10);
+		}
+	</script>
+	<footer>
+		<p>投诉电话：15181618137</p>
+		<p>投诉邮箱：
+			<a href="mailto:2889972532@qq.com">2889972532@qq.com</a>
+		</p>
+	</footer>
+</body>
+</html>
